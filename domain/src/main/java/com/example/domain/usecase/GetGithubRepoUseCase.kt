@@ -1,11 +1,11 @@
 package com.example.domain.usecase
 
 import com.example.domain.model.GithubRepo
-import com.example.domain.repository.Repository
+import com.example.domain.repository.GithubRepoRepository
 import io.reactivex.rxjava3.core.Flowable
 
 class GetGithubRepoUseCase(
-    private val repository: Repository
+    private val repository: GithubRepoRepository
 ) {
     fun execute(owner: String): Flowable<List<GithubRepo>> = repository.getGithubRepos(owner)
 }
