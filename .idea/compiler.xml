@@ -4,6 +4,7 @@
     <bytecodeTargetLevel target="1.7">
       <module name="SampleMviApplication.app" target="11" />
       <module name="SampleMviApplication.data" target="11" />
+      <module name="SampleMviApplication.presentation" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

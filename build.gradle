@@ -23,4 +23,5 @@ ext {
     retrofitVersion = '2.6.4'
     roomVersion = '2.3.0'
     rxjavaVersion = '3.0.0'
+    timberVersion = '4.7.1'
 }

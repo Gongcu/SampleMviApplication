@@ -16,8 +16,4 @@ interface GithubApi {
     @GET("/repositories")
     fun getGithubRepos(authToken: String) : Single<List<GithubRepoEntity>>
     //https://docs.github.com/en/rest/reference/repos#list-public-repositories
-
-    companion object {
-        const val API_URL = "https://api.github.com"
-    }
 }
