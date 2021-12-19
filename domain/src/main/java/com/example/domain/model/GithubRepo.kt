@@ -2,7 +2,8 @@ package com.example.domain.model
 
 data class GithubRepo(
     val name: String,
-    val id: String,
+    val id: Int,
     val date: String,
-    val url: String
+    val htmlUrl: String,
+    val description: String
 )

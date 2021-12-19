@@ -16,3 +16,11 @@ buildscript {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    daggerVersion = '2.40.5'
+    glideVersion = '4.11.0'
+    retrofitVersion = '2.6.4'
+    roomVersion = '2.3.0'
+    rxjavaVersion = '3.0.0'
+}

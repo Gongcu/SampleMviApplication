@@ -7,5 +7,5 @@ import io.reactivex.rxjava3.core.Flowable
 class GetGithubRepoUseCase(
     private val repository: GithubRepoRepository
 ) {
-    fun execute(owner: String): Flowable<List<GithubRepo>> = repository.getGithubRepos(owner)
+    fun execute(authToken: String): Flowable<List<GithubRepo>> = repository.getGithubRepos(authToken)
 }
