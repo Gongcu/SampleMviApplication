@@ -4,8 +4,11 @@ import com.example.data.dto.UserDetailsEntity
 import com.example.data.dto.UserEntity
 import com.example.data.mapper.mapperToUser
 import com.example.data.mapper.mapperToUserDetails
+import com.example.data.source.local.user.UserLocalDataSource
 import com.example.data.source.local.user.UserLocalDataSourceImpl
+import com.example.data.source.remote.user.UserRemoteDataSource
 import com.example.data.source.remote.user.UserRemoteDataSourceImpl
+import com.example.domain.model.GithubRepo
 import com.example.domain.model.User
 import com.example.domain.model.UserDetails
 import com.example.domain.repository.UserRepository
@@ -14,8 +17,8 @@ import io.reactivex.rxjava3.core.Single
 import java.lang.IllegalStateException
 
 class UserRepositoryImpl(
-    private val localDataSource: UserLocalDataSourceImpl,
-    private val remoteDataSource: UserRemoteDataSourceImpl
+    private val localDataSource: UserLocalDataSource,
+    private val remoteDataSource: UserRemoteDataSource
 ) : UserRepository {
 
     override fun getUsers(): Flowable<List<User>> {
@@ -28,7 +31,8 @@ class UserRepositoryImpl(
                 else {
                     val local = Single.just(it.mapperToUser())
                     val remote = getUsersFromRemote()
-                    Single.concat(local, remote)
+                    Single.concat<List<User>>(local, remote)
+                        .distinct()
                 }
             }
     }
@@ -45,7 +49,7 @@ class UserRepositoryImpl(
         return remoteDataSource.getUsers()
             .flatMap {
                 localDataSource.insertUsers(it)
-                    .andThen(Single.just(it.mapperToUser()))
+                Single.just(it.mapperToUser())
             }
     }
 
@@ -53,7 +57,7 @@ class UserRepositoryImpl(
         return remoteDataSource.getUserDetails(login)
             .flatMap {
                 localDataSource.insertUserDetails(it)
-                    .andThen(Single.just(it.mapperToUserDetails()))
+                Single.just(it.mapperToUserDetails())
             }
     }
 

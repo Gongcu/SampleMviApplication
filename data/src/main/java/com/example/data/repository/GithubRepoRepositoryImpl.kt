@@ -22,7 +22,8 @@ class GithubRepoRepositoryImpl(
                 } else {
                     val local = Single.just(it.mapperToGithubRepo())
                     val remote = getGithubReposFromRemote(authToken)
-                    Single.concat(local, remote)
+                    Single.concat<List<GithubRepo>>(local, remote)
+                        .distinct()
                 }
             }
     }
