@@ -10,4 +10,6 @@ java {
 
 dependencies {
     implementation "io.reactivex.rxjava3:rxjava:$rootProject.rxjavaVersion"
+    testImplementation "io.mockk:mockk:$rootProject.mockkVersion"
+    testImplementation "junit:junit:$rootProject.junitVersion"
 }

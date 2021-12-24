@@ -1,4 +1,4 @@
-package com.example.samplemviapplication.di.module.mapkey
+package com.example.presentation.di.mapkey
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

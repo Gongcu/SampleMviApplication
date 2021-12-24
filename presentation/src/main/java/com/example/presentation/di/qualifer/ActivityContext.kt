@@ -1,4 +1,4 @@
-package com.example.samplemviapplication.di.module.qualifer
+package com.example.presentation.di.qualifer
 
 import javax.inject.Qualifier
 

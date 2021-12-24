@@ -30,9 +30,14 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
+    implementation project(path:':presentation')
     implementation project(path:':data')
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'
@@ -43,14 +48,20 @@ dependencies {
 
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:$rootProject.rxjavaAdapterVersion"
 
     implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
+    implementation project(path: ':domain')
     kapt "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
     kapt "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
 
     implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
+    implementation "androidx.multidex:multidex:$rootProject.multidexVersion"
+
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

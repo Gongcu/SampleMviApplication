@@ -1,4 +1,4 @@
-package com.example.samplemviapplication.di.module.scope
+package com.example.presentation.di.scope
 
 import javax.inject.Scope
 
