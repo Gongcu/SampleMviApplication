@@ -7,8 +7,6 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "users")
 data class UserEntity(
     @SerializedName("login") val login: String,
-    @SerializedName("name")
-    val name: String,
     @SerializedName("id")
     @PrimaryKey
     val id: Int,

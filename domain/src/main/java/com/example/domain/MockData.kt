@@ -30,14 +30,12 @@ object MockData {
     val users = listOf(
         User(
             login ="login1",
-            name = "name1",
             id = 1,
             imageUrl = "www.google.com",
             htmlUrl = "www.facebook.com",
         ),
         User(
             login ="login2",
-            name = "name2",
             id = 2,
             imageUrl = "www.google.com",
             htmlUrl = "www.facebook.com",

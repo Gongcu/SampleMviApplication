@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.presentation.di.ViewModelFactory
 import com.example.presentation.di.mapkey.ViewModelKey
-import com.example.presentation.main.MainViewModel
+import com.example.presentation.users.UsersViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -16,6 +16,6 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(MainViewModel::class)
-    internal abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
+    @ViewModelKey(UsersViewModel::class)
+    internal abstract fun bindMainViewModel(viewModel: UsersViewModel): ViewModel
 }
