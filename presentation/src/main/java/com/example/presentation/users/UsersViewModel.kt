@@ -13,6 +13,14 @@ import javax.inject.Inject
 class UsersViewModel @Inject constructor(
     private val getUsersUseCase: GetUsersUseCase
 ): ViewModel() {
+    sealed class ViewState {
+        object Loading: ViewState()
+        object Fetched: ViewState()
+        object Error: ViewState()
+
+        data class Users(val users: List<User>): ViewState()
+    }
+
     private val compositeDisposable = CompositeDisposable()
     private val _viewState = MutableLiveData<ViewState>()
     val viewState : LiveData<ViewState>
@@ -42,13 +50,5 @@ class UsersViewModel @Inject constructor(
     override fun onCleared() {
         compositeDisposable.clear()
         super.onCleared()
-    }
-
-    sealed class ViewState {
-        object Loading: ViewState()
-        object Fetched: ViewState()
-        object Error: ViewState()
-
-        data class Users(val users: List<User>): ViewState()
     }
 }

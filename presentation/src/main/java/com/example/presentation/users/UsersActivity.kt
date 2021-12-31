@@ -29,17 +29,17 @@ class UsersActivity : DaggerAppCompatActivity() {
         adapter = UsersAdapter()
         binding.recyclerView.adapter = adapter
 
-        viewModel.viewState.observe(this) {
-            render(it)
-        }
+        handleViewState()
     }
 
-    private fun render(viewState: UsersViewModel.ViewState) {
-        when(viewState){
-            is UsersViewModel.ViewState.Error ->  renderErrorView()
-            is UsersViewModel.ViewState.Loading ->  renderLoadingView()
-            is UsersViewModel.ViewState.Fetched ->  renderFetchedView()
-            is UsersViewModel.ViewState.Users ->  renderUsersView(viewState.users)
+    private fun handleViewState() {
+        viewModel.viewState.observe(this) {
+            when (it) {
+                is UsersViewModel.ViewState.Error -> renderErrorView()
+                is UsersViewModel.ViewState.Loading -> renderLoadingView()
+                is UsersViewModel.ViewState.Fetched -> renderFetchedView()
+                is UsersViewModel.ViewState.Users -> renderUsersView(it.users)
+            }
         }
     }
 
